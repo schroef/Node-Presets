@@ -33,8 +33,6 @@
 ## - Saving wolrd note caused error due to wwrong node_tree check space_data
 ## - Reports when operator can not place node group due to error. Added better reports as well
 ## - Issue not using categories. 22-09-2022
-
-## Fixed
 ## - Add prefix operator, now checks world or material
 ## - Checks if node tree is
 
@@ -208,10 +206,10 @@ def open_nodepresets_check(context):
                     # switch to the correct workspace
                     bpy.context.window.workspace = bpy.data.workspaces[np_settings["workspace"]]
                     
-                    print("World %s" % np_settings["world_name"])
-                    print("world_name %s" % np_settings["world_name"])
-                    print("ob %s" % ob)
-                    print("use_categories %s" % np_settings["use_categories"])
+                    # print("World %s" % np_settings["world_name"])
+                    # print("world_name %s" % np_settings["world_name"])
+                    # print("ob %s" % ob)
+                    # print("use_categories %s" % np_settings["use_categories"])
 
                     #info add nodes
                     # https://docs.blender.org/api/current/bpy.types.NodeTree.html#bpy.types.NodeTree
