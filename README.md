@@ -1,4 +1,4 @@
-# Node Preset
+# Node Presets
 
 !['Look UI'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-v015.png?v22092022)
 > XXXX
