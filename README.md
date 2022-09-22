@@ -19,6 +19,28 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 7. Node groups will be placed automatically next to eacht other to keep overview
 
 
+
+### System Requirements
+
+| **OS** | **Blender** |
+| ------------- | ------------- |
+| OSX | Blender 2.80+ |
+| Windows | Not Tested |
+| Linux | Not Tested |
+
+
+### Installation Process
+
+1. Download the latest <b>[release](https://github.com/schroef/node-presets/releases/)</b>
+2. If you downloaded the zip file.
+3. Open Blender.
+4. Go to File -> User Preferences -> Addons.
+5. At the bottom of the window, choose *Install From File*.
+6. Select the file `nodepresets-[VERSION].zip` from your download location..
+7. Activate the checkbox for the plugin that you will now find in the list.
+8. You'll get a warning for 2 addons with same name. You can delete the original one in the application folder
+
+
 ### Usage
 
 In the add-on’s preferences you can set the path to your directory. The directory or folder can have multiple blend-files and all node groups they contain will be available. All node editors are supported, you can add compositing, material, enivronment and geometry nodes node groups. In the node editor select a node group which needs to be saved. In the properties panel > tools, you'll find a panel "Node Presets'. Here your blend file(s) will show and can be selected as the target file where you want to save it. Then use the "Save Node Group" button or the shortcut. The blend file will be opened and the node group will be placed last in line. Depending on your options, it will either automatically save and close and return to the orginal working file or you need to press the button "return to file". NB Texture Node Groups have been removed since its a feature which will be removed.
@@ -46,25 +68,6 @@ When Node Groups are added to the target bled file, they are added and checked w
 1. Expand categories with subcategories, usefull wwith large node group library
 
 
-### System Requirements
-
-| **OS** | **Blender** |
-| ------------- | ------------- |
-| OSX | Blender 2.80+ |
-| Windows | Not Tested |
-| Linux | Not Tested |
-
-
-### Installation Process
-
-1. Download the latest <b>[release](https://github.com/schroef/node-presets/releases/)</b>
-2. If you downloaded the zip file.
-3. Open Blender.
-4. Go to File -> User Preferences -> Addons.
-5. At the bottom of the window, choose *Install From File*.
-6. Select the file `nodepresets-[VERSION].zip` from your download location..
-7. Activate the checkbox for the plugin that you will now find in the list.
-8. You'll get a warning for 2 addons with same name. You can delete the original one in the application folder
 
 
 ### Changelog
