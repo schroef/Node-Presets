@@ -36,7 +36,7 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 3. Open Blender.
 4. Go to File -> User Preferences -> Addons.
 5. At the bottom of the window, choose *Install From File*.
-6. Select the file `nodepresets-[VERSION].zip` from your download location..
+6. Select the file `node_presets-[VERSION].zip` from your download location..
 7. Activate the checkbox for the plugin that you will now find in the list.
 8. You'll get a warning for 2 addons with same name. You can delete the original one in the application folder
 
