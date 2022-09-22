@@ -206,6 +206,23 @@ def open_nodepresets_check(context):
                     # switch to the correct workspace
                     bpy.context.window.workspace = bpy.data.workspaces[np_settings["workspace"]]
                     
+                    # space = context.space_data
+                    # print(space.node_tree)
+                    # node_tree = space.node_tree
+
+                    # check shader_type
+                    # https://blender.stackexchange.com/questions/137844/changing-the-shading-type-in-python
+                    for area in bpy.context.screen.areas: 
+                        # print(area.type)
+                        if area.type == 'NODE_EDITOR':
+                            for space in area.spaces: 
+                                print(space.shader_type)
+                                print(space.type)
+                                shader_type = space.shader_type
+                                if space.type == 'NODE_EDITOR':
+                                    # space.shader_type = 'MATERIAL'
+                                    print(space.shader_type)
+
                     # print("World %s" % np_settings["world_name"])
                     # print("world_name %s" % np_settings["world_name"])
                     # print("ob %s" % ob)
@@ -252,7 +269,7 @@ def open_nodepresets_check(context):
                     
                     # No use_categories
                     if not addon_prefs.use_categories:
-                        if bpy.context.object:
+                        if shader_type == 'OBJECT':
                             if not ob:
                                 np_settings["error_messages"] = "No Object with Material to save Node Preset"
                                 return
@@ -274,7 +291,7 @@ def open_nodepresets_check(context):
                             if np_settings["node_type"] == 'CompositorNodeTree':
                                 nt = bpy.context.scene.node_tree.nodes
                                 node_1 = nt.new("CompositorNodeGroup")
-                        else:
+                        if shader_type == 'WORLD':
                             world = bpy.context.scene.world
                             if not world or not world.node_tree.nodes:
                                 np_settings["error_messages"] = "No Node Tree in world available"
