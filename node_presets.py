@@ -32,7 +32,7 @@
 ### Fixed
 ## - Saving wolrd note caused error due to wwrong node_tree check space_data
 ## - Reports when operator can not place node group due to error. Added better reports as well
-
+## - Issue not using categories. 22-09-2022
 
 ## Fixed
 ## - Add prefix operator, now checks world or material
@@ -57,6 +57,9 @@
 '''
 
 TODO
+
+22-09-2022
+- Clean code of Persisten, reuse checks using single functions
 
 21-09-2022
 - Make columns for node preset when saved
@@ -173,6 +176,7 @@ def open_nodepresets_check(context):
     if bpy:
         try:
             addon_prefs = bpy.context.preferences.addons[__name__].preferences
+            # addon_prefs = get_addon_prefs(context)
             np_settings = addon_prefs.node_preset_settings
             np_settings["use_categories"]==""
             if addon_prefs.use_categories and (os.listdir(addon_prefs.search_path)):
@@ -204,43 +208,82 @@ def open_nodepresets_check(context):
                     # switch to the correct workspace
                     bpy.context.window.workspace = bpy.data.workspaces[np_settings["workspace"]]
                     
+                    print("World %s" % np_settings["world_name"])
+                    print("world_name %s" % np_settings["world_name"])
+                    print("ob %s" % ob)
+                    print("use_categories %s" % np_settings["use_categories"])
+
                     #info add nodes
                     # https://docs.blender.org/api/current/bpy.types.NodeTree.html#bpy.types.NodeTree
+                    # use_categories check
+                    if addon_prefs.use_categories:
+                        if np_settings["node_type"] == 'ShaderNodeTree':
+                            if not ob and (addon_prefs.use_categories==True):
+                                np_settings["error_messages"] = "No Object with Material to save Node Preset"
+                                return
+                            if ob and (np_settings["world_name"]==""):
+                                if not bpy.context.active_object.active_material:
+                                    np_settings["error_messages"] = "No node tree available"
+                                    return
+                                # Needs better checking for world or material shader
+                                if ob.type != 'LIGHT':
+                                    nt = bpy.context.active_object.active_material.node_tree.nodes
+                                    node_1 = nt.new("ShaderNodeGroup")
+                                if ob.type == 'LIGHT':
+                                    nt = bpy.context.active_object.data.node_tree.nodes
+                                    node_1 = nt.new("ShaderNodeGroup")
+                        
+                                if ob.modifiers:
+                                    if ob.modifiers.active.type == 'NODES':
+                                        # nt = bpy.context.active_object.modifiers.active.node_group.nodes.active.node_tree.name
+                                        nt = bpy.context.active_object.modifiers.active.node_group.nodes
+                                        node_1 = nt.new("GeometryNodeGroup")
+
+                            else:
+                                world = bpy.context.scene.world
+                                if not world or not world.node_tree.nodes:
+                                    np_settings["error_messages"] = "No Node Tree in world available"
+                                    return
+                                if np_settings["world_name"]:
+                                    nt = world.node_tree.nodes #.active.node_tree
+                                    node_1 = nt.new("ShaderNodeGroup")
+                                    
+                        if np_settings["node_type"] == 'CompositorNodeTree':
+                            nt = bpy.context.scene.node_tree.nodes
+                            node_1 = nt.new("CompositorNodeGroup")
                     
-                    if np_settings["node_type"] == 'ShaderNodeTree':
-                        print("World %s" % np_settings["world_name"])
-                        print("world_name %s" % np_settings["world_name"])
-                        print("ob %s" % ob)
-                        if ob and (np_settings["world_name"]==""):
+                    # No use_categories
+                    if not addon_prefs.use_categories:
+                        if bpy.context.object:
+                            if not ob:
+                                np_settings["error_messages"] = "No Object with Material to save Node Preset"
+                                return
                             if not bpy.context.active_object.active_material:
                                 np_settings["error_messages"] = "No node tree available"
                                 return
-                            # Needs better checking for world or material shader
-                            if ob.type != 'LIGHT':
-                                nt = bpy.context.active_object.active_material.node_tree.nodes
-                                node_1 = nt.new("ShaderNodeGroup")
-                            if ob.type == 'LIGHT':
-                                nt = bpy.context.active_object.data.node_tree.nodes
-                                node_1 = nt.new("ShaderNodeGroup")
-                    
+                            if np_settings["node_type"] == 'ShaderNodeTree':
+                                if ob.type != 'LIGHT':
+                                    nt = bpy.context.active_object.active_material.node_tree.nodes
+                                    node_1 = nt.new("ShaderNodeGroup")
+                                if ob.type == 'LIGHT':
+                                    nt = bpy.context.active_object.data.node_tree.nodes
+                                    node_1 = nt.new("ShaderNodeGroup")
                             if ob.modifiers:
                                 if ob.modifiers.active.type == 'NODES':
-                                    # nt = bpy.context.active_object.modifiers.active.node_group.nodes.active.node_tree.name
                                     nt = bpy.context.active_object.modifiers.active.node_group.nodes
                                     node_1 = nt.new("GeometryNodeGroup")
 
+                            if np_settings["node_type"] == 'CompositorNodeTree':
+                                nt = bpy.context.scene.node_tree.nodes
+                                node_1 = nt.new("CompositorNodeGroup")
                         else:
                             world = bpy.context.scene.world
-                            if not world:
+                            if not world or not world.node_tree.nodes:
                                 np_settings["error_messages"] = "No Node Tree in world available"
                                 return
-                            if np_settings["world_name"]:
-                                nt = world.node_tree.nodes #.active.node_tree
-                                node_1 = nt.new("ShaderNodeGroup")
-                                
-                    if np_settings["node_type"] == 'CompositorNodeTree':
-                        nt = bpy.context.scene.node_tree.nodes
-                        node_1 = nt.new("CompositorNodeGroup")
+                            
+                            nt = world.node_tree.nodes #.active.node_tree
+                            node_1 = nt.new("ShaderNodeGroup")
 
                     anode = nt.active
                     bpy.data.node_groups[np_settings["node_group"]].use_fake_user = True
@@ -673,7 +716,7 @@ class NP_OT_SaveNodeGroup(Operator):
                 # Check if file is saved already if not present filebrowser dialog to save
                 # if bpy.data.filepath != '':
                 if bpy.data.filepath == '':
-                    self.report({'WARNING'}, " Please save fule first, run Save NodeGroup again whenn done.")
+                    self.report({'WARNING'}, " Please save file first, run Save NodeGroup again whenn done.")
                     # bpy.ops.wm.save_mainfile('INVOKE_AREA')
                     # print("saving")
                     return {'CANCELLED'}
@@ -994,17 +1037,18 @@ def check_search_path(context):
         return len(files) == 0
 
 def update_use_categories(self, context):
-    preferences = context.preferences
-    addon_prefs = preferences.addons[__name__].preferences
+    # preferences = context.preferences
+    # addon_prefs = preferences.addons[__name__].preferences
+    addon_prefs = get_addon_prefs(context)
     np_settings = addon_prefs.node_preset_settings
     # print(self.use_categories)
     if self.use_categories or not self.use_categories and (np_settings["use_categories"]=="False"):
         np_settings["use_categories"] = "True"
         addon_prefs.info_messages = "Restart needed in order to update menus."
     
-    else:
+    if not self.use_categories:
         addon_prefs.node_preset_settings["use_categories"] = "False"
-        addon_prefs.info_messages = ""
+        addon_prefs.info_messages = "Restart needed in order to update menus."
     # print(check_search_path(context))
     if check_search_path(context):
         np_settings["use_categories"] = "True"
@@ -1014,8 +1058,9 @@ def update_use_categories(self, context):
 
 
 def node_search_path(context):
-    preferences = context.preferences
-    addon_prefs = preferences.addons[__name__].preferences
+    # preferences = context.preferences
+    # addon_prefs = preferences.addons[__name__].preferences
+    addon_prefs = get_addon_prefs(context)
     dirpath = addon_prefs.search_path
     return dirpath
 
@@ -1115,7 +1160,7 @@ class NP_NodeTemplatePrefs(AddonPreferences):
         sub.enabled = self.search_path !=''
         sub.prop(self, "use_categories")
         
-        if (self.node_preset_settings["use_categories"]=="True") and self.use_categories or check_search_path(context):
+        if (self.node_preset_settings["use_categories"]=="True") and self.use_categories or check_search_path(context) or (self.node_preset_settings["use_categories"]=="False"):
             row.prop(self,"info_messages",text="", icon='INFO', emboss=False)
 
         # sub = row

@@ -6,8 +6,14 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Prefix to list items so they are stored and can be customized
 - Shortcut for save action and return action
+- Error report when base files isnt setup properly for adding node groups
+
 ### Fixed
 - Saving wolrd note caused error due to wwrong node_tree check space_data
+- Reports when operator can not place node group due to error. Added better reports as well
+- Issue not using categories. 22-09-2022
+- Add prefix operator, now checks world or material
+- Checks if node tree is
 
 ## [0.1.4] - 2022-05-10
 ### Fixed
