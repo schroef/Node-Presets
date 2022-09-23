@@ -14,7 +14,7 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 2. Option to use Categories so you can separate by; Materials, Compositor, Geometry Nodes and Environment node groups
 2. Add and remove prefixes to be used for categories
 4. Option to ungroup node group when placing
-5. Automatically save node group and return to original working fule
+5. Automatically save node group and return to original working file
 6. Shortcuts for faster workflow
 7. Node groups will be placed automatically next to eacht other to keep overview
 

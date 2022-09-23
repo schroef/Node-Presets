@@ -23,6 +23,10 @@
 ##
 ## Nore Presets
 ##
+## v0.1.5 - 2022-09-23
+## Added
+## - Opening preferences from Extras menu open addon expandded
+
 ## v0.1.5 - 2022-09-13
 ## Added
 ## - Prefix to list items so they are stored and can be customized
@@ -1032,6 +1036,14 @@ class NP_OT_OpenPrefs(Operator):
         # Go to Quickswitch addon
         bpy.context.preferences.active_section = 'ADDONS'
         bpy.context.window_manager.addon_search = 'node presets'
+
+        # https://blender.stackexchange.com/questions/230698/question-about-managing-the-preferences-window-python
+        # Show expanded
+        import addon_utils
+        module_name = "node_presets"
+        bpy.ops.preferences.addon_expand(module=module_name)# get_addon_name() it is a small function that returns the name of the addon (For my convenience)
+        bpy.ops.preferences.addon_show(module=module_name) # Show my addon pref
+
         # force panel redraw
         context.area.tag_redraw()
 

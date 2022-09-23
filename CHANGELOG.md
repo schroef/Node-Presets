@@ -2,7 +2,11 @@ All notable changes to this project will be documented in this file.
 # Changelog
 
 
-## [0.1.5] - 2022-02-09
+## [0.1.5] - 2022-09-23
+### Added
+- Opening preferences from Extras menu open addon expandded
+
+## [0.1.5] - 2022-09-13
 ### Added
 - Prefix to list items so they are stored and can be customized
 - Shortcut for save action and return action
