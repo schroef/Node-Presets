@@ -49,17 +49,22 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 
 In the add-on’s preferences you can set the path to your directory. The directory or folder can have multiple blend-files and all node groups they contain will be available. All node editors are supported, you can add compositing, material, environment and geometry nodes node groups. 
 
-<b>Node Presets Panel</b><br>
+### Node Presets Panel
+
 <img align="right" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-properties-panel-v015.png?23092022">
 In the node editor select a node group which needs to be saved. In the Properties Panel > Tools, you'll find a panel "Node Presets'. Here your blend file(s) will show and can be selected as the target file where you want to save it. Then use the "Save Node Group" button or the shortcut. The blend file will be opened and the node group will be placed last in line. Depending on your options, it will either automatically save and close and return to the orginal working file or you need to press the button "return to file". NB Texture Node Groups have been removed since it's a feature which will be removed.
 <br>
 <br>
-<b>Setting up blend files</b><br>
+
+### Setting up blend files
+
 <img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-file-setup-v015.png?23092022">
 The best way to use the blend files, is to keep the node editor open for the target blend file type your using. When working with categories, this also implies. For materials and geometry node and simple object should be added with either a Material or a Geometry Node modifier. For the environment node groups keep the world type open. When saving compositor nodes keeps compositor editor open. Then save and close each type of file.
 <br>
 <br>
-<b>Using categories</b><br>
+
+### Using categories
+
 <img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022">
 In the preferences you can check "Use Categories. This makes it easier to identify all the different node groups from your saved files. Because by default its not clear which node groups can be used. When using categories its best to divide them using the following blend-file names; Materials, Compositor, Environment and Geometry Nodes. 
 
@@ -69,7 +74,8 @@ Currently, i've added an operator for automatically adding a Prefix to the type 
 > Preferences and options
 
 
-<b>Cleaning the source blend files</b><br>
+### Cleaning the source blend files
+
 <img alt="Cleaning unwanted Node Groups" align="right" width="250" height="180" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022">
 When Node Groups are added to the target bled file, they are added and checked with Fake User. The easiest way to remove them is by going to the Outliner Header > Data API > Node Groups. Then uncheck Fake User, save and close the file and the Node Group should then be removed, mits the user count is 1 at that point. Otherwise there is an instance also in the Node Editor depending on what type of Node Group which was saved.
 
