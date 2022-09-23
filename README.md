@@ -65,7 +65,7 @@ In the preferences you can check "Use Categories. This makes it easier to identi
 
 Currently, i've added an operator for automatically adding a Prefix to the type of blend which is open. This adds a prefix with 2 characters and is used to show the icon and add them to the specific categorie. The operator can be found in the setting menu in the panel. It will check all the node groups in the file and add the 2 character prefer followed by underscore, so ie materials will look like this; SH_Water refractive. I'm thinking about expanding this with subcategories, but thats is a WIP.
 
-!['Categories example add menu'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022">)
+<img alt="Categories example add menu" align="right" width="450" height="337" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022">
 > Add menu when using categories
 
 
