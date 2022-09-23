@@ -60,12 +60,12 @@ The best way to use the blend files, is to keep the node editor open for the tar
 <br>
 <br>
 <b>Using categories</b><br>
-<img align="right" width="250" height="187" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022">
+<img align="right" width="250" height="187" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-preferences-v015.png?22092022">
 In the preferences you can check "Use Categories. This makes it easier to identify all the different node groups from your saved files. Because by default its not clear which node groups can be used. When using categories its best to divide them using the following blend-file names; Materials, Compositor, Environment and Geometry Nodes. 
 
 Currently, i've added an operator for automatically adding a Prefix to the type of blend which is open. This adds a prefix with 2 characters and is used to show the icon and add them to the specific categorie. The operator can be found in the setting menu in the panel. It will check all the node groups in the file and add the 2 character prefer followed by underscore, so ie materials will look like this; SH_Water refractive. I'm thinking about expanding this with subcategories, but thats is a WIP.
 
-!['Categories example add menu'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-preferences-v015.png?22092022)
+!['Categories example add menu'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022">)
 > Add menu when using categories
 
 
