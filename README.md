@@ -87,7 +87,8 @@ Currently, i've added an operator for automatically adding a Prefix to the type 
 When Node Groups are added to the target bled file, they are added and checked with Fake User. The easiest way to remove them is by going to the Outliner Header > Data API > Node Groups. Then uncheck Fake User, save and close the file and the Node Group should then be removed, mits the user count is 1 at that point. Otherwise there is an instance also in the Node Editor depending on what type of Node Group which was saved.
 <br>
 <br>
-<i>UPDATE I've added an Operator which automatically saves and reloads the fule. You can find this in the Extra's menu</i>
+
+> UPDATE I've added an Operator which automatically saves and reloads the file. You can find this in the Extra's menu
 
 <!-- !['Cleaning unwanted Node Groups'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022) -->
 <!-- > Cleaning unwanted Node Groups -->
