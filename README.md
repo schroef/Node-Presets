@@ -1,6 +1,6 @@
 # Node Presets
 
-!['Look UI'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-v015.png?v22092022)
+!['Look UI'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-v015.png?v22092022 "Click to enlarge")
 
 
 
@@ -53,21 +53,21 @@ In the add-on’s preferences you can set the path to your directory. The direct
 
 ### Node Presets Panel
 
-<img align="right" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-properties-panel-v015.png?23092022" tooltip="Click to enlarge">
+<img align="right" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-properties-panel-v015.png?23092022" "Click to enlarge" >
 In the node editor select a node group which needs to be saved. In the Properties Panel > Tools, you'll find a panel "Node Presets'. Here your blend file(s) will show and can be selected as the target file where you want to save it. Then use the "Save Node Group" button or the shortcut. The blend file will be opened and the node group will be placed last in line. Depending on your options, it will either automatically save and close and return to the orginal working file or you need to press the button "return to file". NB Texture Node Groups have been removed since it's a feature which will be removed.
 <br>
 <br>
 
 ### Setting up blend files
 
-<img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-file-setup-v015.png?23092022" tooltip="Click to enlarge">
+<img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-file-setup-v015.png?23092022" "Click to enlarge" >
 The best way to use the blend files, is to keep the node editor open for the target blend file type your using. When working with categories, this also implies. For materials and geometry node and simple object should be added with either a Material or a Geometry Node modifier. For the environment node groups keep the world type open. When saving compositor nodes keeps compositor editor open. Then save and close each type of file.
 <br>
 <br>
 
 ### Using categories
 
-<img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022" tooltip="Click to enlarge">
+<img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-using-categories-v015.png?23092022" "Click to enlarge" >
 In the preferences you can check "Use Categories. This makes it easier to identify all the different node groups from your saved files. Because by default its not clear which node groups can be used. When using categories its best to divide them using the following blend-file names; Materials, Compositor, Environment and Geometry Nodes. 
 
 Currently, i've added an operator for automatically adding a Prefix to the type of blend which is open. This adds a prefix with 2 characters and is used to show the icon and add them to the specific categorie. The operator can be found in the setting menu in the panel. It will check all the node groups in the file and add the 2 character prefer followed by underscore, so ie materials will look like this; SH_Water refractive. I'm thinking about expanding this with subcategories, but thats is a WIP.
@@ -78,7 +78,7 @@ Currently, i've added an operator for automatically adding a Prefix to the type 
 
 ### Cleaning the source blend files
 
-<img alt="Cleaning unwanted Node Groups" align="right" width="250" height="180" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022" tooltip="Click to enlarge">
+<img alt="Cleaning unwanted Node Groups" align="right" width="250" height="180" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022" "Click to enlarge" >
 When Node Groups are added to the target bled file, they are added and checked with Fake User. The easiest way to remove them is by going to the Outliner Header > Data API > Node Groups. Then uncheck Fake User, save and close the file and the Node Group should then be removed, mits the user count is 1 at that point. Otherwise there is an instance also in the Node Editor depending on what type of Node Group which was saved.
 
 <!-- !['Cleaning unwanted Node Groups'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022) -->
