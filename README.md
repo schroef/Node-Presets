@@ -5,7 +5,7 @@
 
 
 This add-on allows you to set a file path to a directory with blend-file(s) containing node groups. All the node groups will then be available from a new menu in the node editors ‣ Add ‣ Template menu.
-> [Source: Blender manual](https://docs.blender.org/manual/en/2.83/addons/node/node_presets.html?target=_blank "Open link to page")
+> [Source: Blender manual](https://docs.blender.org/manual/en/2.83/addons/node/node_presets.html "Open link to page" " target"=_blank)
 
 
 ### New Features
