@@ -21,7 +21,7 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 
 <br>
 
-### System Requirements & Installation
+## System Requirements & Installation
 
 ### System Requirements
 
