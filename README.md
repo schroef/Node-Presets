@@ -45,7 +45,7 @@ This add-on allows you to set a file path to a directory with blend-file(s) cont
 
 <br>
 
-### Usage
+## Usage
 
 In the add-on’s preferences you can set the path to your directory. The directory or folder can have multiple blend-files and all node groups they contain will be available. All node editors are supported, you can add compositing, material, environment and geometry nodes node groups. 
 
