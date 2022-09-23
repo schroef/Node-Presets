@@ -50,8 +50,7 @@ In the node editor select a node group which needs to be saved. In the Propertie
 <br>
 <br>
 <br>
-<br>
-<img align="right" width="250" height="136" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-file-setup-v015.png?23092022">
+<img align="right" width="250" height="181" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-file-setup-v015.png?23092022">
 The best way to use the blend files, is to keep the node editor open for the target blend file type your using. When working with categories, this also implies. For materials and geometry node and simple object should be added with either a Material or a Geometry Node modifier. For the environment node groups keep the world type open. When saving compositor nodes keeps compositor editor open. Then save and close each type of file.
 
 
