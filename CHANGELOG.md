@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 ## [0.1.5.1] - 2022-09-23
 ### Added
 - Opening preferences from Extras menu open addon expandded
+### Fixed
+- Error report messages
 
 ## [0.1.5] - 2022-09-13
 ### Added

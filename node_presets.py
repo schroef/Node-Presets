@@ -26,6 +26,8 @@
 ## v0.1.5.1 - 2022-09-23
 ## Added
 ## - Opening preferences from Extras menu open addon expandded
+## Fixed
+## - Fix error report messages
 
 ## v0.1.5 - 2022-09-13
 ## Added
