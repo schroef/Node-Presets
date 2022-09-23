@@ -54,7 +54,7 @@ In the add-on’s preferences you can set the path to your directory. The direct
 ### Node Presets Panel
 
 
-<img align="right" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-properties-panel-v015.png?21092022" title="Click to enlarge" >
+<img align="right" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-panel-v015.png?21092022" title="Click to enlarge" >
 In the node editor select a node group which needs to be saved. In the Properties Panel > Tools, you'll find a panel "Node Presets'. Here your blend file(s) will show and can be selected as the target file where you want to save it. Then use the "Save Node Group" button or the shortcut. The blend file will be opened and the node group will be placed last in line. Depending on your options, it will either automatically save and close and return to the orginal working file or you need to press the button "return to file". NB Texture Node Groups have been removed since it's a feature which will be removed.
 <br>
 <br>
