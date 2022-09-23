@@ -28,6 +28,7 @@
 ## - Opening preferences from Extras menu open addon expandded
 ## Fixed
 ## - Fix error report messages
+## - Auto add & remove prefix operator > wouldnt add and remove prefix properly
 
 ## v0.1.5 - 2022-09-13
 ## Added
@@ -847,15 +848,19 @@ class NP_OT_AutoRenameShaders(Operator):
         #         print("compostir")
                 
         for ng in bpy.data.libraries.data.node_groups:
-            print(ng.type)
-            print(ng.type)
-            # if snode.shader_type == 'WORLD':
+            # print(ng.type)
             if ng.type == 'SHADER':
-                if snode.shader_type == 'MATERIAL':
+                # print(snode.shader_type)
+                if snode.shader_type == 'OBJECT':
                     if self.add_prefix:
+                        # print("add_prefix %s" % ng.name[0:3])
+                        # print(ng.name[0:3] != 'SH_')
                         if ng.name[0:3] != 'SH_':
                             ng.name = 'SH_' + ng.name 
-                    if self.remove_prefix:
+                            print(ng.name)
+                    elif self.remove_prefix:
+                        # print("remove_prefix %s" % ng.name[0:3])
+                        # print(ng.name[0:3] != 'SH_')
                         if ng.name[0:3] == 'SH_':
                             ng.name = ng.name[3:] 
 
@@ -863,7 +868,7 @@ class NP_OT_AutoRenameShaders(Operator):
                     if self.add_prefix:
                         if ng.name[0:3] != 'CP_':
                             ng.name = 'CP_' + ng.name 
-                    if self.remove_prefix:
+                    elif self.remove_prefix:
                         if ng.name[0:3] == 'CP_':
                             ng.name = ng.name[3:] 
 
@@ -871,7 +876,7 @@ class NP_OT_AutoRenameShaders(Operator):
                 if self.add_prefix:
                     if ng.name[0:3] != 'CP_':
                         ng.name = 'CP_' + ng.name 
-                if self.remove_prefix:
+                elif self.remove_prefix:
                     if ng.name[0:3] == 'CP_':
                         ng.name = ng.name[3:] 
             
@@ -879,7 +884,7 @@ class NP_OT_AutoRenameShaders(Operator):
                 if self.add_prefix:
                     if ng.name[0:3] != 'GN_':
                         ng.name = 'GN_' + ng.name 
-                if self.remove_prefix:
+                elif self.remove_prefix:
                     if ng.name[0:3] == 'SH_':
                         ng.name = ng.name[3:] 
         
