@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 ### Fixed
 - Error report messages
 - Auto add & remove prefix operator > wouldnt add and remove prefix properly
+- Poll for auto save & reload operator
 
 ## [0.1.5] - 2022-09-13
 ### Added

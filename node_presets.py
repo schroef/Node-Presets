@@ -26,10 +26,11 @@
 ## v0.1.5.1 - 2022-09-23
 ## Added
 ## - Opening preferences from Extras menu open addon expandded
-## - Added Save & Reload operator when cleaning blend files
+## - Save & Reload operator when cleaning blend files
 ## Fixed
 ## - Fix error report messages
 ## - Auto add & remove prefix operator > wouldnt add and remove prefix properly
+## - Poll for auto save & reload operator
 
 ## v0.1.5 - 2022-09-13
 ## Added
@@ -180,6 +181,13 @@ class NP_WM_OT_save_reload(bpy.types.Operator):
     """Save and Reload the current blend file"""
     bl_idname = "node.wm_save_reload"
     bl_label = "Save & Reload"
+    bl_description = "Auto saves and reloads Blend file"
+
+    @classmethod
+    def poll(cls, context):
+        addon_prefs = get_addon_prefs(context)
+        np_settings = addon_prefs.node_preset_settings
+        return np_settings["preset_file"] != ""
 
     def save_reload(self, context, path):
         if not path:
@@ -842,8 +850,6 @@ class NP_OT_AutoRenameShaders(Operator):
     def poll(cls, context):
         addon_prefs = get_addon_prefs(context)
         np_settings = addon_prefs.node_preset_settings
-        # print(addon_prefs.preset_file)
-    #    return context.active_object is not None 
         return np_settings["preset_file"] != ""
 
     def execute(self, context):
