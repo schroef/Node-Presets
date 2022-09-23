@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 ## [0.1.5.1] - 2022-09-23
 ### Added
 - Opening preferences from Extras menu open addon expandded
+- Save & Reload operator when cleaning blend files
 ### Fixed
 - Error report messages
 - Auto add & remove prefix operator > wouldnt add and remove prefix properly

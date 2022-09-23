@@ -26,6 +26,7 @@
 ## v0.1.5.1 - 2022-09-23
 ## Added
 ## - Opening preferences from Extras menu open addon expandded
+## - Added Save & Reload operator when cleaning blend files
 ## Fixed
 ## - Fix error report messages
 ## - Auto add & remove prefix operator > wouldnt add and remove prefix properly
@@ -175,6 +176,24 @@ class NP_OT_ErrorDialog(Operator):
     #     wm = context.window_manager
     #     return wm.invoke_props_dialog(self)
 
+class NP_WM_OT_save_reload(bpy.types.Operator):
+    """Save and Reload the current blend file"""
+    bl_idname = "node.wm_save_reload"
+    bl_label = "Save & Reload"
+
+    def save_reload(self, context, path):
+        if not path:
+            bpy.ops.wm.save_as_mainfile("INVOKE_AREA")
+            return
+        bpy.ops.wm.save_mainfile()
+        self.report({"INFO"}, "Saved & Reloaded")
+        bpy.ops.wm.open_mainfile("EXEC_DEFAULT", filepath=path)
+
+    def execute(self, context):
+        path = bpy.data.filepath
+        self.save_reload(context, path)
+
+        return {"FINISHED"}
 
 @persistent
 def open_nodepresets_check(context):
@@ -1488,6 +1507,7 @@ class NP_MT_settings_menu(Menu):
         layout.operator('nodes.edit_node_group', icon='FILEBROWSER') #GREASEPENCIL PROPERTIES
         layout.operator('node.np_auto_rename',text='Add Prefix', icon='ADD').add_prefix = True
         layout.operator('node.np_auto_rename',text = 'Remove Prefix', icon='REMOVE').remove_prefix = True
+        layout.operator('node.wm_save_reload',text = 'Save & Reload', icon='FILE_REFRESH')
         layout.separator()
         layout.operator('nodes.open_prefs', icon='PREFERENCES')
 
@@ -1495,6 +1515,7 @@ class NP_MT_settings_menu(Menu):
 addon_keymaps = []
 classes = (
     NP_OT_ErrorDialog,
+    NP_WM_OT_save_reload,
     NP_MT_nodepresets_menu,
 
     NODE_OT_template_add,
