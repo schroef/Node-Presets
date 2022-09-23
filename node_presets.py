@@ -31,6 +31,8 @@
 ## - Fix error report messages
 ## - Auto add & remove prefix operator > wouldnt add and remove prefix properly
 ## - Poll for auto save & reload operator
+## - Issue when adding Node Preset for Lights 
+## - when Using Categories for Material and World
 
 ## v0.1.5 - 2022-09-13
 ## Added
@@ -224,10 +226,24 @@ def open_nodepresets_check(context):
             # import traceback
             # print(traceback.print_exc())
 
+        # check shader_type
+        # https://blender.stackexchange.com/questions/137844/changing-the-shading-type-in-python
+        for area in bpy.context.screen.areas: 
+            # print(area.type)
+            if area.type == 'NODE_EDITOR':
+                for space in area.spaces: 
+                    print(space.type)
+                    if space.type == 'NODE_EDITOR':
+                        # space.shader_type = 'MATERIAL'
+                        print(space.shader_type)
+                        if space.shader_type == 'OBJECT':
+                            shader_type = space.shader_type
+
         if np_settings["preset_file"] != "":
             if os.path.samefile(np_settings["preset_file"], bpy.data.filepath):
                 # logger.info("Editing a node preset.")
                 ob = bpy.context.object
+                
 
                 if not np_settings["edit_preset"]:
                     # source: https://blender.stackexchange.com/questions/147488/load-and-change-material-with-python-script
@@ -244,36 +260,28 @@ def open_nodepresets_check(context):
                     # print(space.node_tree)
                     # node_tree = space.node_tree
 
-                    # check shader_type
-                    # https://blender.stackexchange.com/questions/137844/changing-the-shading-type-in-python
-                    for area in bpy.context.screen.areas: 
-                        # print(area.type)
-                        if area.type == 'NODE_EDITOR':
-                            for space in area.spaces: 
-                                print(space.shader_type)
-                                print(space.type)
-                                shader_type = space.shader_type
-                                if space.type == 'NODE_EDITOR':
-                                    # space.shader_type = 'MATERIAL'
-                                    print(space.shader_type)
-
-                    # print("World %s" % np_settings["world_name"])
-                    # print("world_name %s" % np_settings["world_name"])
-                    # print("ob %s" % ob)
-                    # print("use_categories %s" % np_settings["use_categories"])
+                    print("World %s" % np_settings["world_name"])
+                    print("world_name %s" % np_settings["world_name"])
+                    print("ob %s" % ob)
+                    print("use_categories %s" % np_settings["use_categories"])
 
                     #info add nodes
                     # https://docs.blender.org/api/current/bpy.types.NodeTree.html#bpy.types.NodeTree
                     # use_categories check
                     if addon_prefs.use_categories:
+                        # aobnt = bpy.context.active_object.active_material.node_tree.nodes
+                        print("Using Categories")
+                        print("ob.type %s" % ob.type)
                         if np_settings["node_type"] == 'ShaderNodeTree':
-                            if not ob and (addon_prefs.use_categories==True):
-                                np_settings["error_messages"] = "No Object with Material to save Node Preset"
-                                return
+                            # if shader_type == 'OBJECT':
+                            # if aobnt and (addon_prefs.use_categories==True):
+                            #     np_settings["error_messages"] = "No Object with Material to save Node Preset"
+                            #     return
                             if ob and (np_settings["world_name"]==""):
-                                if not bpy.context.active_object.active_material:
+                                if not bpy.context.active_object.active_material and (ob.type != 'LIGHT'):
                                     np_settings["error_messages"] = "No node tree available"
                                     return
+                                print("ob.type %s" % ob.type)
                                 # Needs better checking for world or material shader
                                 if ob.type != 'LIGHT':
                                     nt = bpy.context.active_object.active_material.node_tree.nodes
@@ -287,7 +295,8 @@ def open_nodepresets_check(context):
                                         # nt = bpy.context.active_object.modifiers.active.node_group.nodes.active.node_tree.name
                                         nt = bpy.context.active_object.modifiers.active.node_group.nodes
                                         node_1 = nt.new("GeometryNodeGroup")
-
+                            
+                            # if shader_type == 'WORLD':
                             else:
                                 world = bpy.context.scene.world
                                 if not world or not world.node_tree.nodes:
@@ -303,6 +312,7 @@ def open_nodepresets_check(context):
                     
                     # No use_categories
                     if not addon_prefs.use_categories:
+                        print("Not Using Categories")
                         if shader_type == 'OBJECT':
                             if not ob:
                                 np_settings["error_messages"] = "No Object with Material to save Node Preset"

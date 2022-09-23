@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - Error report messages
 - Auto add & remove prefix operator > wouldnt add and remove prefix properly
 - Poll for auto save & reload operator
+- Issue when adding Node Preset for Lights 
+- when Using Categories for Material and World
 
 ## [0.1.5] - 2022-09-13
 ### Added
