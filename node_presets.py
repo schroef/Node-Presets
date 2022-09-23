@@ -23,7 +23,7 @@
 ##
 ## Nore Presets
 ##
-## v0.1.5 - 2022-09-23
+## v0.1.5.1 - 2022-09-23
 ## Added
 ## - Opening preferences from Extras menu open addon expandded
 
@@ -95,7 +95,7 @@ bl_info = {
     "name": "Node Presets",
     "description": "Useful and time-saving tools for node group workflow. Add node groups directly to the node editors",
     "author": "Campbell Barton, Rombout Versluijs",
-    "version": (0, 1, 5),
+    "version": (0, 1, 51),
     "blender": (2, 80, 0),
     "location": "Node Editors > Add > Template",
     "doc_url": "{BLENDER_MANUAL_URL}/addons/node/node_presets.html",
@@ -746,7 +746,9 @@ class NP_OT_SaveNodeGroup(Operator):
 
                 bpy.ops.wm.open_mainfile(filepath=np_settings["preset_file"])
             
-            print(np_settings["error_messages"])
+
+            print("np_settings %s" % np_settings)
+            print("np_settings error_messages %s" % np_settings["error_messages"])
             if np_settings["error_messages"] != "":
                 self.report({'ERROR'}, np_settings["error_messages"])    
                 return {'CANCELLED'}
@@ -1122,6 +1124,7 @@ class NP_NodeTemplatePrefs(AddonPreferences):
         "original_file": "",
         "targetpath":"",
         "use_categories":"",
+        "error_messages":"",
         }
 
     use_transform: BoolProperty(
