@@ -65,16 +65,16 @@ In the preferences you can check "Use Categories. This makes it easier to identi
 
 Currently, i've added an operator for automatically adding a Prefix to the type of blend which is open. This adds a prefix with 2 characters and is used to show the icon and add them to the specific categorie. The operator can be found in the setting menu in the panel. It will check all the node groups in the file and add the 2 character prefer followed by underscore, so ie materials will look like this; SH_Water refractive. I'm thinking about expanding this with subcategories, but thats is a WIP.
 
-!['Categories example add menu'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-preferences-v015.png?22092022)
+!['Categories example add menu'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/node-presets-preferences-v015.png?23092022)
 > Preferences and options
 
 
 <b>Cleaning the source blend files</b>
-
+<img alt="Cleaning unwanted Node Groups" align="right" width="450" height="290" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022">
 When Node Groups are added to the target bled file, they are added and checked with Fake User. The easiest way to remove them is by going to the Outliner Header > Data API > Node Groups. Then uncheck Fake User, save and close the file and the Node Group should then be removed, mits the user count is 1 at that point. Otherwise there is an instance also in the Node Editor depending on what type of Node Group which was saved.
 
-!['Cleaning unwanted Node Groups'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/addon-preferences_v011.jpg)
-> Cleaning unwanted Node Groups
+<!-- !['Cleaning unwanted Node Groups'](https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022) -->
+<!-- > Cleaning unwanted Node Groups -->
 
 <b>WIP</b>
 
