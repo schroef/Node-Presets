@@ -69,7 +69,7 @@ Currently, i've added an operator for automatically adding a Prefix to the type 
 > Preferences and options
 
 
-<b>Cleaning the source blend files</b>
+<b>Cleaning the source blend files</b><br>
 <img alt="Cleaning unwanted Node Groups" align="right" width="450" height="290" src="https://raw.githubusercontent.com/wiki/schroef/node-presets/images/cleaning-blend-files.gif?23092022">
 When Node Groups are added to the target bled file, they are added and checked with Fake User. The easiest way to remove them is by going to the Outliner Header > Data API > Node Groups. Then uncheck Fake User, save and close the file and the Node Group should then be removed, mits the user count is 1 at that point. Otherwise there is an instance also in the Node Editor depending on what type of Node Group which was saved.
 
