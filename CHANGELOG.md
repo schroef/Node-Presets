@@ -2,6 +2,10 @@ All notable changes to this project will be documented in this file.
 # Changelog
 
 
+## [0.1.5.2] - 2023-03-09
+### Fixed
+- Issue when adding nodegroup to environment because PRINT ob.type (disabled those)> #274 open_nodepresets_check
+
 ## [0.1.5.1] - 2022-09-23
 ### Added
 - Opening preferences from Extras menu open addon expandded
@@ -50,5 +54,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 <!--### Official Rigify Info-->
 
-[0.1.5.1]:https://github.com/schroef/QuickSwitch/releases/tag/v.0.1.5.1
-[0.1.5]:https://github.com/schroef/QuickSwitch/releases/tag/v.0.1.5
+[0.1.5.2]:https://github.com/schroef/Node-Presets/releases/tag/v.0.1.5.2
+[0.1.5.1]:https://github.com/schroef/Node-Presets/releases/tag/v.0.1.5.1
+[0.1.5]:https://github.com/schroef/Node-Presets/releases/tag/v.0.1.5

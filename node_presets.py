@@ -23,6 +23,11 @@
 ##
 ## Nore Presets
 ##
+
+## v0.1.5.2 - 2023-03-09
+## Fixed
+## - Issue when adding nodegroup to environment because PRINT ob.type (disabled those)> #274 open_nodepresets_check
+
 ## v0.1.5.1 - 2022-09-23
 ## Added
 ## - Opening preferences from Extras menu open addon expandded
@@ -102,7 +107,7 @@ bl_info = {
     "name": "Node Presets",
     "description": "Useful and time-saving tools for node group workflow. Add node groups directly to the node editors",
     "author": "Campbell Barton, Rombout Versluijs",
-    "version": (0, 1, 51),
+    "version": (0, 1, 52),
     "blender": (2, 80, 0),
     "location": "Node Editors > Add > Template",
     "doc_url": "{BLENDER_MANUAL_URL}/addons/node/node_presets.html",
@@ -232,10 +237,10 @@ def open_nodepresets_check(context):
             # print(area.type)
             if area.type == 'NODE_EDITOR':
                 for space in area.spaces: 
-                    print(space.type)
+                    # print(space.type)
                     if space.type == 'NODE_EDITOR':
                         # space.shader_type = 'MATERIAL'
-                        print(space.shader_type)
+                        # print(space.shader_type)
                         if space.shader_type == 'OBJECT':
                             shader_type = space.shader_type
 
@@ -260,18 +265,18 @@ def open_nodepresets_check(context):
                     # print(space.node_tree)
                     # node_tree = space.node_tree
 
-                    print("World %s" % np_settings["world_name"])
-                    print("world_name %s" % np_settings["world_name"])
-                    print("ob %s" % ob)
-                    print("use_categories %s" % np_settings["use_categories"])
+                    # print("World %s" % np_settings["world_name"])
+                    # print("world_name %s" % np_settings["world_name"])
+                    # print("ob %s" % ob)
+                    # print("use_categories %s" % np_settings["use_categories"])
 
                     #info add nodes
                     # https://docs.blender.org/api/current/bpy.types.NodeTree.html#bpy.types.NodeTree
                     # use_categories check
                     if addon_prefs.use_categories:
                         # aobnt = bpy.context.active_object.active_material.node_tree.nodes
-                        print("Using Categories")
-                        print("ob.type %s" % ob.type)
+                        # print("Using Categories")
+                        # print("ob.type %s" % ob.type)
                         if np_settings["node_type"] == 'ShaderNodeTree':
                             # if shader_type == 'OBJECT':
                             # if aobnt and (addon_prefs.use_categories==True):
@@ -281,7 +286,7 @@ def open_nodepresets_check(context):
                                 if not bpy.context.active_object.active_material and (ob.type != 'LIGHT'):
                                     np_settings["error_messages"] = "No node tree available"
                                     return
-                                print("ob.type %s" % ob.type)
+                                # print("ob.type %s" % ob.type)
                                 # Needs better checking for world or material shader
                                 if ob.type != 'LIGHT':
                                     nt = bpy.context.active_object.active_material.node_tree.nodes
